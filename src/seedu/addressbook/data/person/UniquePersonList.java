@@ -36,6 +36,7 @@ public class UniquePersonList implements Iterable<Person> {
     public static class PersonNotFoundException extends Exception {}
 
     private final List<Person> internalList = new ArrayList<>();
+    private final List<Person> sortedList = new ArrayList<>();
 
     /**
      * Constructs empty person list.
@@ -81,6 +82,15 @@ public class UniquePersonList implements Iterable<Person> {
         return Collections.unmodifiableList(internalList);
     }
 
+    /**
+     * Returns an unmodifiable sorted java List view with elements cast as immutable {@link ReadOnlyPerson}s.
+     * For use with other methods/libraries.
+     * Any changes to the internal list/elements are immediately visible in the returned list.
+     */
+    public List<ReadOnlyPerson> sortedImmutableListView() {
+        sort();
+        return Collections.unmodifiableList(sortedList);
+    }
 
     /**
      * Checks if the list contains an equivalent person as the given argument.
@@ -134,7 +144,8 @@ public class UniquePersonList implements Iterable<Person> {
      */
 
     public void sort() {
-        Collections.sort(internalList);
+        Collections.copy(sortedList, internalList);
+        Collections.sort(sortedList);
     }
 
     @Override
