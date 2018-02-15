@@ -23,7 +23,7 @@
   list
 
 ##########################################################
-# test add person command, setup state for futuer tests
+# test add person command, setup state for future tests
 ##########################################################
 
   # should catch invalid args format
@@ -40,7 +40,7 @@
   add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag
 
   # should add correctly and list non private information
-  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
+  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchyt
   list
   add Betsy Choo pp/222222 pe/benchoo@nus.edu.sg pa/222, beta street t/secretive
   list
@@ -48,11 +48,18 @@
   list
   add Dickson Ee p/444444 pe/dickson@nus.edu.sg a/444, delta street t/friends
   list
-  add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street
   list
 
   # should not allow adding duplicate persons
   add Esther Potato p/555555 e/esther@not.a.real.potato pa/555, epsilon street t/tubers t/starchy
+
+##########################################################
+# test sort persons command
+##########################################################
+
+  # should show sorted list
+  sort
 
 ##########################################################
 # test view/viewall persons command
